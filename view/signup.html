@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filemoon </title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+</head>
+<body>
+    <div class="bg-gray-200 min-h-screen  flex items-center justify-center animate__animated animate-fadeIn">
+        <div class="w-5/12 bg-white rounded-xl p-8 flex items-center justify-center flex-col gap-8 animate__animated animate__pulse ">
+            <div class="flex items-center gap-2">
+                <i class="ri-contrast-2-fill text-5xl text-violet-600"></i>
+                <h1 class="text-3xl font-medium">Filemoon</h1>
+            </div>
+            <form class="w-full space-y-6" onsubmit="signup(event)">
+                <div class="flex flex-col gap-1">
+                    <label class="text-gray-500 text-base" for="fullname">FullName</label>
+                    <input 
+                        class="w-full border border-gray-300 p-3 rounded" 
+                        type="text" 
+                        name="fullname" 
+                        placeholder="John Doe" 
+                        required
+                    />
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-gray-500 text-base" for="mobile">Mobile</label>
+                    <input 
+                        class="w-full border border-gray-300 p-3 rounded" 
+                        type="number" 
+                        name="mobile" 
+                        placeholder="6255848799" 
+                        required
+                    />
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-gray-500 text-base" for="email">Email</label>
+                    <input 
+                        class="w-full p-3 rounded border border-gray-300 " 
+                        type="email" 
+                        name="email" 
+                        placeholder="john@gmail.com" 
+                        required
+                    />
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-gray-500 text-base" for="email">Password</label>
+                    <input 
+                        class="w-full p-3  rounded border border-gray-300 " 
+                        type="password" 
+                        name="password" 
+                        placeholder="john@gmail.com" 
+                        required
+                    />
+                </div>
+                <button class="w-full text-lg bg-violet-500 rounded text-white font-medium p-2">Sign up</button>
+            </form>
+            <div class="flex items-center gap-3">
+                <p class="text-gray-500 text-base">Don't have an account ?</p>
+                <a class="text-green-600 font-medium" href="/login">Login</a>
+            </div>
+        </div>
+    </div>
+    <script src="./js/env.js"></script>
+    <script src="./js/session.js"></script>
+    <script src="./js/Signup.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filemoon </title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+        href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+        rel="stylesheet"
+    />
+    <linkx
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel= "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+</head>
+<body>
+    <div class="bg-gray-200 min-h-screen">
+        <aside class=" space-y-6 py-6 overflow-hidden fixed bg-linear-to-r from-cyan-500 to-blue-500 h-full top-0 left-0 transition  " id="sidebar" style="width:250px; transition: 0.3s;" >
+            <div class=" flex flex-col items-center">
+                <img class="w-[90px] h-[90px] rounded-full object-cover" src="../images/avtar.jpg" id="pic" alt="profile" onclick="uploadImage()">
+                <h2 class="text-lg font-medium text-gray-100 capitalize" id="fullname"></h2>
+                <p class="text-gray-100 text-base font-semibold" id="email"></p>
+            </div>
+           <div class="px-6 flex flex-col gap-6">
+                <a href="/dashboard">
+                    <button class="w-full bg-red-400 py-2 text-white font-medium rounded hover:bg-red-500">
+                        <i class="ri-apps-line"></i>
+                        <label>Dashboard</label>
+                    </button>
+                </a>
+                <a href="/files">
+                    <button class="w-full bg-red-400 py-2 text-white font-medium rounded hover:bg-red-500">
+                        <i class="ri-file-line"></i>
+                        <label>My File</label>
+                    </button>
+                </a>
+                <a href="/history">
+                    <button class="w-full bg-red-400 py-2 text-white font-medium rounded hover:bg-red-500">
+                        <i class="ri-history-line"></i>
+                        <label>History</label>
+                    </button>
+                </a>
+                <a>
+                    <button onclick="Logout()" class="w-full bg-red-400 py-2 text-white font-medium rounded hover:bg-red-500">
+                        <i class="ri-logout-circle-r-line"></i>
+                        <label>Logout</label>
+                    </button>
+                </a>
+                
+           </div>
+        </aside>
+        <section class="h-full" id="section" style="margin-left: 250px; transition: 0.3s;">
+            <nav class="bg-white px-6 py-4 shadow-lg flex items-center justify-between">
+                <div class="flex items-center gap-1">
+                    <i class="ri-contrast-2-fill text-4xl text-violet-600"></i>
+                    <h2 class="text-2xl font-medium">Filemoon</h2>
+                </div>
+                <div class="flex gap-6">
+                    <button onclick="Logout()" class="bg-gray-100 px-3 py-2 rounded hover:bg-gray-200">
+                        <i class="ri-logout-circle-r-line"></i>
+                    </button>
+                    <button onclick=toggleSiebar()   class="bg-gray-100 px-3 py-2 rounded hover:bg-gray-200">
+                        <i class="ri-menu-3-line"></i>
+                    </button>
+                </div>
+            </nav>
+            <div class="p-6 space-y-4">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-medium">History</h2>
+                </div>
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-slate-900 text-white text-left">
+                            <th class="font-medium py-4 pl-6">Filename</th>
+                            <th class="font-medium">Email</th>
+                            <th class="font-medium">DateTime</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white text-gray-500" id="table-body">
+                        
+                    </tbody>
+                </table>
+            </div>
+            <div class="fixed bg-white w-4/12 h-full top-0  shadow-lg p-6 space-y-6" style="right: -33.33%; transition: 0.2s;" id="drawer">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-gray-600 font-medium">Adding a new file</h2>
+                    <button onclick="toggleDrawer()">
+                        <i class="ri-close-circle-fill text-lg hover:text-rose-600"></i>
+                    </button>
+
+                </div>
+                <div class="h-px bg-gray-600 -mx-6"></div>
+                <form class="space-y-6">
+                    <div class="flex flex-col gap-2">
+                        <label class="text-gray-600 font-medium">Filename</label>
+                        <input required class="px-3 py-2 border border-gray-300 rounded" type="text" placeholder="Enter Your Filename"/>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="text-gray-600 font-medium">Choose Your File   </label>
+                        <input required class="px-3 py-2 border border-gray-300 rounded" type="file" placeholder="Enter Your Filename"/>
+                    </div>
+                    <button class="text-white py-2 px-6 bg-rose-400 font-medium rounded hover:bg-rose-600 ">Upload Now</button>
+                </form>
+
+                <div class="bg-gray-200 h-4">
+                    <div class="bg-green-500 h-full w-[50%] text-xs text-gray-500 text-center">
+                        50%
+                    </div>
+                </div>
+            </div>  
+        </section>
+    </div>
+    <script src="../js/env.js"></script>
+    <script src="../js/session.js"></script>
+    <script src="../js/Layout.js"></script>
+    <script src="../js/history.js"></script>
+</body>
+</html>
